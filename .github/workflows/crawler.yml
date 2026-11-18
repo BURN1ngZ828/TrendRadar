@@ -4,11 +4,10 @@ on:
   schedule:
     # UTC 00:15 / 04:15 / 13:15 = 北京时间每日 08:15 / 12:15 / 21:15
     - cron: "15 0,4,13 * * *"
+  push:
+    branches: [master]
+    paths: ['.github/workflows/crawler.yml', '.github/scripts/build_feed.py', 'config/config.yaml']
   workflow_dispatch:
-
-concurrency:
-  group: crawler-${{ github.ref_name }}
-  cancel-in-progress: true
 
 permissions:
   contents: write
